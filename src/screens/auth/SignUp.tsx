@@ -1,10 +1,11 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
+import Header from '../../components/Header';
 
 const SignUp = () => {
   return (
-    <View>
-      <Text>SignUp</Text>
+    <View style={{flex: 1, backgroundColor: '#FFFFFF'}}>
+      <Header heading="Sign Up" />
     </View>
   );
 };
