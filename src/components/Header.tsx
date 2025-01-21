@@ -1,13 +1,24 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 const AntIcon = require('react-native-vector-icons/AntDesign').default;
 
 const Header = ({heading}: any) => {
+  const navigation = useNavigation();
+  const handleBackPress = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.navigate('Home'); // Redirect to a fallback screen
+    }
+  };
   return (
     <>
-      <View style={{position: 'absolute', top: 15, left: 15, zIndex: 99}}>
+      <Pressable
+        onPress={handleBackPress}
+        style={{position: 'absolute', top: 15, left: 15, zIndex: 99}}>
         <AntIcon name="left" size={25} color={'#FFFFFF'} />
-      </View>
+      </Pressable>
       <View style={styles.container}>
         <Text style={styles.heading}>{heading}</Text>
       </View>
